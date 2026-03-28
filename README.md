@@ -1,113 +1,145 @@
-# Vityarthiproject-CSA2001
-#  Student Performance Predictor
+#  Student Performance Predictor (Pass / Fail)
 
-##  Overview
-The Student Performance Predictor is a simple Python-based project that predicts whether a student will perform well or not based on key factors like study hours, attendance, sleep, and previous scores.
-
-This project is created as part of the Bring Your Own Project (BYOP) assignment to demonstrate problem-solving using basic programming and logical thinking.
-
----
-
-##  Problem Statement
-Many students are unable to evaluate their academic performance early. This project aims to help predict student performance using simple logic so that students can improve their habits in time.
-
----
-
-##  Solution Approach
-This project uses a rule-based learning approach:
-- A dataset is generated using random values
-- High-performing student patterns are identified
-- Average values are calculated as thresholds
-- Predictions are made based on these thresholds
-
----
-
-##  Features
-- No external dataset required
-- Fully independent Python code
-- Simple and easy-to-understand logic
-- Predicts performance (High / Low)
-- Displays model accuracy
-- Runs in terminal (no installation needed)
-
----
-
-##  Technologies Used
-- Python (only built-in libraries)
+A Machine Learning project that predicts whether a student will **Pass or Fail**
+based on Study Hours, Attendance, Sleep Hours, and Previous Score.
 
 ---
 
 ##  Project Structure
+
+```
 student-performance-predictor/
 │
-├── student_performance.py
-└── README.md
+├── student_predictor_v2.py    # Main ML model & predictor
+├── student_data.csv           # Your dataset (40 students)
+├── requirements.txt           # Python dependencies
+└── README.md                  # This file
+```
 
 ---
 
-##  How to Run the Project
+##  Dataset Description (`student_data.csv`)
 
-### Step 1: Open terminal or command prompt
+| Column           | Type    | Range     | Description                        |
+|------------------|---------|-----------|------------------------------------|
+| `hours_study`    | Integer | 1 – 10    | Daily study hours                  |
+| `attendance`     | Integer | 40 – 100  | Class attendance percentage        |
+| `sleep_hours`    | Integer | 4 – 10    | Daily sleep hours                  |
+| `previous_score` | Integer | 40 – 100  | Previous exam score                |
+| `performance`    | Integer | 0 or 1    | **0 = Fail** / **1 = Pass**        |
 
-### Step 2: Run the program
+### Class Distribution
 
-python student_performance.py
-
----
-
-##  Example Input
-Study hours: 6
-Attendance: 80
-Sleep hours: 7
-Previous score: 70
-
----
-
-##  Output
- High Performance Expected
-
-or
- Low Performance Expected
+| Label | Value | Count |
+|-------|-------|-------|
+| Pass  |   1   |  25   |
+| Fail  |   0   |  15   |
 
 ---
 
-##  Model Explanation
-The model works by:
-1. Generating synthetic student data
-2. Finding patterns in high-performing students
-3. Creating threshold values
-4. Comparing user input with these thresholds
+##  Installation
+
+```bash
+pip install -r requirements.txt
+```
+
+**Requirements:**
+```
+numpy>=1.24
+pandas>=2.0
+scikit-learn>=1.3
+```
 
 ---
 
-##  Challenges Faced
-- Creating a dataset without external files  
-- Designing a simple prediction logic  
-- Maintaining accuracy without using ML libraries  
+##  How to Run
+
+```bash
+python student_predictor_v2.py
+```
+
+The script will:
+1. Load and explore `student_data.csv`
+2. Train **4 ML models** and compare accuracy + cross-validation scores
+3. Select the **best model** automatically
+4. Show batch predictions on the full dataset
+5. Display sample student predictions with probabilities
+6. Launch **interactive mode** — enter student values manually
 
 ---
 
-##  Learning Outcomes
-- Data generation techniques  
-- Basic model logic  
-- Python programming skills  
-- Problem-solving approach  
+##  Models Used
+
+| Model               | Test Acc | CV Acc | Notes                          |
+|---------------------|----------|--------|--------------------------------|
+| Random Forest       | 100%     | 95%    | Best — ensemble of trees       |
+| Gradient Boosting   | 75%      | 95%    | Strong with more data          |
+| Logistic Regression | 100%     | 97.5%  | Linear, fast, interpretable    |
+| SVM (RBF Kernel)    | 100%     | 97.5%  | Great for small datasets       |
+
+---
+
+##  Feature Importance (Random Forest)
+
+```
+attendance         █████████████████████  0.4202  <- Most important
+previous_score     █████████████          0.2643
+hours_study        ████████               0.1751
+sleep_hours        ███████                0.1404
+```
+
+**Attendance** is the strongest predictor of Pass/Fail in this dataset.
+
+---
+
+##  Sample Output
+
+```
+  Student 1  Pass
+    Study: 8h  Attendance: 90%  Sleep: 8h  Prev Score: 78
+    Pass Probability : ████████████████████  100.0%
+    Fail Probability : ░░░░░░░░░░░░░░░░░░░░    0.0%
+
+  Student 2  Fail
+    Study: 2h  Attendance: 55%  Sleep: 5h  Prev Score: 42
+    Pass Probability :                          0.0%
+    Fail Probability : ████████████████████  100.0%
+```
+
+---
+
+##  Predict Your Own Student
+
+```python
+from student_predictor_v2 import StudentPerformancePredictor
+import pandas as pd
+
+df        = pd.read_csv("student_data.csv")
+predictor = StudentPerformancePredictor()
+predictor.train(df)
+
+result = predictor.predict_one(
+    hours_study    = 6,
+    attendance     = 80,
+    sleep_hours    = 7,
+    previous_score = 65
+)
+print(result)
+# {'prediction': 1, 'label': 'Pass', 'pass_prob': 100.0, 'fail_prob': 0.0}
+```
 
 ---
 
 ##  Future Improvements
-- Add graphical user interface (GUI)  
-- Use real-world dataset  
-- Implement advanced machine learning models  
+
+- [ ] Add more student records for better generalization
+- [ ] Hyperparameter tuning with GridSearchCV
+- [ ] Streamlit web UI with input form
+- [ ] Export model using joblib for deployment
+- [ ] Add SHAP values for explainability
 
 ---
 
-##  Author
-Pranati  
+## 📄 License
 
----
-
-##  Conclusion
-This project shows that even simple logic and programming can solve real-world problems effectively without complex tools.
-
----
+Open-source — free to use for educational and academic purposes.
