@@ -1,16 +1,16 @@
-# 📋 Project Statement
+#  Project Statement
 
 ## Student Performance Predictor using Machine Learning
 
 ---
 
-## 1. 🎯 Project Title
+## 1.  Project Title
 
 **Student Performance Predictor — Pass / Fail Classification using Machine Learning**
 
 ---
 
-## 2. 📌 Problem Statement
+## 2.  Problem Statement
 
 In educational institutions, identifying students who are at risk of failing
 is a critical challenge. Traditional methods of evaluating student performance
@@ -23,7 +23,7 @@ and lifestyle factors — enabling early intervention and personalized support.
 
 ---
 
-## 3. 🎓 Objective
+## 3.  Objective
 
 - To develop a supervised Machine Learning model that predicts student academic performance.
 - To identify the most influential factors affecting student outcomes.
@@ -32,7 +32,7 @@ and lifestyle factors — enabling early intervention and personalized support.
 
 ---
 
-## 4. 📊 Dataset Description
+## 4.  Dataset Description
 
 The dataset consists of **40 student records** with the following features:
 
@@ -50,7 +50,7 @@ The dataset consists of **40 student records** with the following features:
 
 ---
 
-## 5. 🛠️ Methodology
+## 5.  Methodology
 
 ### Step 1 — Data Collection
 A structured CSV dataset is used as input containing student academic
@@ -91,7 +91,7 @@ The trained model predicts Pass/Fail for:
 
 ---
 
-## 6. 🔍 Key Findings
+## 6.  Key Findings
 
 | Finding                        | Detail                                      |
 |-------------------------------|---------------------------------------------|
@@ -109,7 +109,7 @@ The trained model predicts Pass/Fail for:
 
 ---
 
-## 7. 💻 Tools & Technologies
+## 7.  Tools & Technologies
 
 | Category         | Technology              |
 |------------------|-------------------------|
@@ -122,7 +122,7 @@ The trained model predicts Pass/Fail for:
 
 ---
 
-## 8. 📂 Project Files
+## 8. Project Files
 
 | File                        | Description                                  |
 |-----------------------------|----------------------------------------------|
@@ -134,7 +134,7 @@ The trained model predicts Pass/Fail for:
 
 ---
 
-## 9. ▶️ How to Run
+## 9. How to Run
 
 ```bash
 # Step 1: Install dependencies
@@ -146,7 +146,7 @@ python student_predictor_v2.py
 
 ---
 
-## 10. 📈 Expected Output
+## 10. Expected Output
 
 ```
 MODEL COMPARISON
@@ -165,7 +165,7 @@ sleep_hours        ███████                0.1404
 
 ---
 
-## 11. 🚀 Future Scope
+## 11. Future Scope
 
 - Expand dataset with more student records for better generalization
 - Add additional features: parental education, internet access, extracurriculars
@@ -177,7 +177,7 @@ sleep_hours        ███████                0.1404
 
 ---
 
-## 12. ✅ Conclusion
+## 12. Conclusion
 
 This project successfully demonstrates the use of Machine Learning to predict
 student academic performance. The **Random Forest classifier** achieved
